@@ -12,3 +12,10 @@ func _ready():
 
 func _process(delta):
 	position += velocity * speed
+
+func _on_bullet_area_entered(area):
+	queue_free()
+
+
+func on_screen_exited():
+	queue_free()

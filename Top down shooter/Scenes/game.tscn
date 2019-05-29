@@ -6,9 +6,10 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 511.58, 283.159 )
 script = ExtResource( 1 )
 
@@ -19,3 +20,4 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 946, 52 )

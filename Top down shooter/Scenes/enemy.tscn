@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/enemy.gd" type="Script" id=1]
 [ext_resource path="res://Art/icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.4473, 31.9437 )
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 173.658
 
 [node name="enemy" type="KinematicBody2D"]
 position = Vector2( 506, 255 )
@@ -26,10 +23,4 @@ editor/display_folded = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="enemyHB"]
 shape = SubResource( 1 )
-
-[node name="PlayerDetection" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-shape = SubResource( 2 )
 [connection signal="area_entered" from="enemyHB" to="." method="on_bullet_hit"]
-[connection signal="area_entered" from="PlayerDetection" to="." method="on_player_entered"]
