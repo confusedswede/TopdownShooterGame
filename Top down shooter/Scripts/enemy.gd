@@ -13,6 +13,9 @@ func _physics_process(delta):
 	move_and_collide(dir * speed * delta)
 	look_at(player.position)
 	
+	$Label.set_text(String(health))
+	$Label.set_rotation(-self.rotation)
+	
 	if (health <= 0):
 		queue_free()
 

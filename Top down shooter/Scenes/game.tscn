@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/icon.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/spawner.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -19,5 +19,14 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Player/CollisionShape2D"]
 texture = ExtResource( 2 )
 
-[node name="enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 946, 52 )
+[node name="Spawner" parent="." instance=ExtResource( 3 )]
+position = Vector2( 51, 44.5 )
+
+[node name="Spawner2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 903, 509.5 )
+
+[node name="Spawner3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 48, 508.5 )
+
+[node name="Spawner4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 896, 21.5 )

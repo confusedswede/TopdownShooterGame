@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/enemy.gd" type="Script" id=1]
 [ext_resource path="res://Art/icon.png" type="Texture" id=2]
+[ext_resource path="res://Extra/Roboto-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.4473, 31.9437 )
 
-[node name="enemy" type="KinematicBody2D"]
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 3 )
+
+[node name="enemy" type="KinematicBody2D" groups=[
+"enemies",
+]]
 position = Vector2( 506, 255 )
 script = ExtResource( 1 )
 
@@ -23,4 +30,15 @@ editor/display_folded = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="enemyHB"]
 shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 0.43
+margin_left = -32.0
+margin_top = -31.0
+margin_right = 34.0
+margin_bottom = 34.0
+rect_pivot_offset = Vector2( 32, 32 )
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
 [connection signal="area_entered" from="enemyHB" to="." method="on_bullet_hit"]
