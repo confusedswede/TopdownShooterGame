@@ -32,17 +32,22 @@ func _physics_process(delta):
 		queue_free()
 		player.player_score += 5
 
+
 func on_bullet_hit(area):
 	if (area.is_in_group("bullet")):
 		health -= 1
 		
 
 func on_timeout_complete():
-	can_attack = true
+    can_attack = true
+    attack()
+ 
+func attack():
+    if (can_attack):
+        player.health -= 1
+        can_attack = false
 
 func _on_enemy_atk_area_entered(area):
-	if (area.get_name() == "HB"):
-		if (can_attack):
-			player.health -= 1
-			can_attack = false
-			timer.start()
+    if (area.get_name() == "HB"):
+        attack()
+        timer.start()
