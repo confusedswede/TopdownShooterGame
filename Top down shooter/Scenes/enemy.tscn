@@ -41,4 +41,6 @@ rect_pivot_offset = Vector2( 32, 32 )
 custom_fonts/font = SubResource( 2 )
 align = 1
 valign = 1
+
+[node name="Damage" type="Timer" parent="."]
 [connection signal="area_entered" from="enemyHB" to="." method="on_bullet_hit"]

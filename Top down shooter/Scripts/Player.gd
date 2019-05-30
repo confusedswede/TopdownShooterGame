@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-export (int) var speed = 200
+onready var player_score_text = get_node("../Player_score")
 
+
+var speed = 250
 var velocity = Vector2()
-
-var target
-
+var health = 5
+var player_score = 0
 
 func _process(delta):
 	
@@ -19,6 +20,15 @@ func _process(delta):
 	# SHOOT
 	if Input.is_action_just_pressed('shoot'):
 		shoot()
+	
+	
+	if (health<= 0):
+		get_tree().change_scene("res://Scenes/main_menu.tscn")
+	
+	$health_text.set_text(String(health))
+	$health_text.set_rotation(-self.rotation)
+	
+	player_score_text.set_text("Score:" + String(player_score))
 
 
 func get_input():
@@ -40,5 +50,9 @@ func get_input():
 
 func shoot():
 	var bullet = load("res://Scenes/bullet.tscn").instance()
-	bullet.position = get_global_position()
+	bullet.position = $player_gun.get_global_position()
 	get_parent().add_child(bullet)
+
+func _on_HB_area_entered(area):
+	if (area.get_tree().get_nodes_in_group("enemies")):
+		health -=1

@@ -16,8 +16,11 @@ func _physics_process(delta):
 	$Label.set_text(String(health))
 	$Label.set_rotation(-self.rotation)
 	
+	
+	
 	if (health <= 0):
 		queue_free()
+		player.player_score += 5
 
 func on_bullet_hit(area):
 	if (area.is_in_group("bullet")):
