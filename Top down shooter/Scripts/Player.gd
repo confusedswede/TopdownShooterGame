@@ -52,7 +52,3 @@ func shoot():
 	var bullet = load("res://Scenes/bullet.tscn").instance()
 	bullet.position = $player_gun.get_global_position()
 	get_parent().add_child(bullet)
-
-func _on_HB_area_entered(area):
-	if (area.get_tree().get_nodes_in_group("enemies")):
-		health -=1

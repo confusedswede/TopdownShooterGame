@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/enemy.gd" type="Script" id=1]
 [ext_resource path="res://Art/icon.png" type="Texture" id=2]
@@ -10,6 +10,9 @@ extents = Vector2( 32.4473, 31.9437 )
 [sub_resource type="DynamicFont" id=2]
 size = 50
 font_data = ExtResource( 3 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 59.3543
 
 [node name="enemy" type="KinematicBody2D" groups=[
 "enemies",
@@ -42,5 +45,9 @@ custom_fonts/font = SubResource( 2 )
 align = 1
 valign = 1
 
-[node name="Damage" type="Timer" parent="."]
+[node name="enemy_atk" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_atk"]
+shape = SubResource( 3 )
 [connection signal="area_entered" from="enemyHB" to="." method="on_bullet_hit"]
+[connection signal="area_entered" from="enemy_atk" to="." method="_on_enemy_atk_area_entered"]
